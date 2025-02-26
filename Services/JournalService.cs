@@ -14,13 +14,13 @@ namespace TreeApi.Services
 
         public void LogAction(string eventId, string text, object request)
         {
-            var requestId = Guid.NewGuid().ToString(); // Генерация уникального RequestId
+            var requestId = Guid.NewGuid().ToString(); 
             var journalEntry = new Journal
             {
                 RequestId = requestId,
                 EventId = eventId,
                 Timestamp = DateTime.UtcNow,
-                QueryParameters = request.ToString(), // Преобразуйте объект запроса в строку
+                QueryParameters = request.ToString(), 
                 BodyParameters = System.Text.Json.JsonSerializer.Serialize(request),
                 Text = text
             };
@@ -31,13 +31,13 @@ namespace TreeApi.Services
 
         public void LogError(string eventId, string text, object request, Exception ex)
         {
-            var requestId = Guid.NewGuid().ToString(); // Генерация уникального RequestId
+            var requestId = Guid.NewGuid().ToString();
             var journalEntry = new Journal
             {
                 RequestId = requestId,
                 EventId = eventId,
                 Timestamp = DateTime.UtcNow,
-                QueryParameters = request.ToString(), // Преобразуйте объект запроса в строку
+                QueryParameters = request.ToString(),
                 BodyParameters = System.Text.Json.JsonSerializer.Serialize(request),
                 StackTrace = ex.StackTrace ?? string.Empty,
                 Text = $"{text}. Error: {ex.Message}"
