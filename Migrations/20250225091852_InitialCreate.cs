@@ -47,7 +47,8 @@ namespace TreeApi.Migrations
                         name: "FK_Nodes_Nodes_ParentNodeId",
                         column: x => x.ParentNodeId,
                         principalTable: "Nodes",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(

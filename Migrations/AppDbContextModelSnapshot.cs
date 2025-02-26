@@ -87,7 +87,8 @@ namespace TreeApi.Migrations
                 {
                     b.HasOne("TreeApi.Models.Node", "ParentNode")
                         .WithMany("Children")
-                        .HasForeignKey("ParentNodeId");
+                        .HasForeignKey("ParentNodeId")
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.Navigation("ParentNode");
                 });

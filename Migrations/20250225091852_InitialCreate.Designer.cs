@@ -12,7 +12,7 @@ using TreeApi.Data;
 namespace TreeApi.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250225054817_InitialCreate")]
+    [Migration("20250225091852_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -90,7 +90,8 @@ namespace TreeApi.Migrations
                 {
                     b.HasOne("TreeApi.Models.Node", "ParentNode")
                         .WithMany("Children")
-                        .HasForeignKey("ParentNodeId");
+                        .HasForeignKey("ParentNodeId")
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.Navigation("ParentNode");
                 });

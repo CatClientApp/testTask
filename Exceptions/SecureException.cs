@@ -1,4 +1,7 @@
-public class SecureException : Exception
+namespace TreeApi.Exceptions
 {
-    public SecureException(string message) : base(message) { }
+    public class SecureException : Exception
+    {
+        public SecureException(string message) : base(message) { }
+    }
 }
