@@ -36,7 +36,6 @@ namespace TreeApi.Controllers
                 if (!string.IsNullOrEmpty(filter.Search))
                     query = query.Where(j => j.QueryParameters.Contains(filter.Search) || j.BodyParameters.Contains(filter.Search));
 
-                // Получение данных
                 var total = query.Count();
                 var items = query
                     .OrderByDescending(j => j.Timestamp) // Сортировка по времени (самые новые записи первыми)
@@ -73,7 +72,7 @@ namespace TreeApi.Controllers
             catch (SecureException ex)
             {
                 // Логирование ошибки
-                return NotFound(ex.Message); // Возвращаем 404 Not Found
+                return NotFound(ex.Message);
             }
         }
     }

@@ -4,6 +4,7 @@ using TreeApi.Models;
 namespace TreeApi.Data
 {
     public class AppDbContext : DbContext
+    {
 
         public DbSet<Node> Nodes { get; set; }
         public DbSet<Journal> Journals { get; set; }
@@ -31,7 +32,7 @@ namespace TreeApi.Data
             modelBuilder.Entity<Node>()
                 .HasOne(n => n.ParentNode) 
                 .WithMany(n => n.Children) 
-                .HasForeignKey(n => n.ParentNodeId)
+                .HasForeignKey(n => n.ParentNodeId) 
                 .OnDelete(DeleteBehavior.Restrict);
         }
     }
